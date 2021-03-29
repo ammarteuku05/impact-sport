@@ -29,7 +29,7 @@ getButtonMatches.forEach(button => {
 function getMatches(league) {
     fetch(`https://api.football-data.org/v2/competitions/${league}/matches?dateFrom=2021-03-28&&dateTo=2021-04-03`, {
             headers: {
-                'X-Auth-Token': '7c14ac2a3da541d6a79a96f0601c9868'
+                'X-Auth-Token': 'ef49605e24054f1e90193b245c95c915'
             }
         }).then(res => res.json())
 

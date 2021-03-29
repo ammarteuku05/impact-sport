@@ -72,6 +72,8 @@
 }
 
 .footer-wrapper {
+  position: fixed;
+  bottom: 0;
   width: 100%;
   background-color: black;
   color: white;
@@ -162,7 +164,6 @@
   font-family: "Poppins", sans-serif;
 }
 .footer-wrapper .footer {
-  bottom: 0%;
   width: 80%;
   margin: 0 auto;
   padding: 1em 0;
@@ -254,5 +255,3 @@
 .content-wrapper .content .list-club-container .list-club img p {
   text-align: center;
 }
-
-/*# sourceMappingURL=clubs.css.map */

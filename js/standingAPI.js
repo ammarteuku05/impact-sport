@@ -1,4 +1,4 @@
-const api_key = "b864eea518104ee49de111f1d442d85e";
+const api_key = "ef49605e24054f1e90193b245c95c915";
 
 // default standings page
 fetch('http://api.football-data.org/v2/competitions/PL/standings', {

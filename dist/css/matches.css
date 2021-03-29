@@ -156,11 +156,13 @@
 }
 
 .footer-wrapper {
+  position: fixed;
   width: 100%;
   background-color: black;
   color: white;
   font-family: "Poppins", sans-serif;
 }
+
 .footer-wrapper .footer {
   width: 80%;
   margin: 0 auto;
