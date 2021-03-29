@@ -202,7 +202,7 @@ function clickLogo() {
 }
 
 function showTeam(m) {
-    return `<div class="list-club modal-detail-button" data-toggle="modal" data-target="#clubDetailModal" data-id="${m.id}">
+    return `<div class="list-club mt-2 modal-detail-button" data-toggle="modal" data-target="#clubDetailModal" data-id="${m.id}">
         <img src="${m.crestUrl}" alt="club-logo">
         <p>${m.name}</p>
     </div>`;
