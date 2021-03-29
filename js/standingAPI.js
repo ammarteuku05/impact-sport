@@ -161,7 +161,6 @@ function changeButtonFormatSeriaA() {
     document.getElementById('premier-league').setAttribute("class", "side-button");
 }
 
-
 function showRank(m) {
     let form = m.form;
     let newForm = form.replace(/[^\w\s]/gi, '');
