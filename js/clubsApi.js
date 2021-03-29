@@ -1,41 +1,45 @@
-const api_key = "db8a26b5d9654afeb8f780ccf63d59e3";
+const api_key = "b864eea518104ee49de111f1d442d85e";
 
-// default show clubs
+// default standings page
 fetch('https://api.football-data.org/v2/competitions/PL/teams', {
     headers: {
         'X-Auth-Token': api_key
     }
-}) .then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
-    
-    })
+})
+.then(response => response.json())
+.then(response => {
+    const team = response.teams;
+    let teamDetail = '';
+    team.forEach(m => teamDetail += showTeam(m));
+    const teamContainer = document.querySelector('.list-club-container');
+    teamContainer.innerHTML = teamDetail;
+
+    clickLogo();    
+});
 
 // event if premier league button on click
 const premierLeagueButton = document.querySelector('.premier-league-button');
 premierLeagueButton.addEventListener('click', function() {
 
-changeButtonFormatPremierLeague(); // change format button
+    changeButtonFormatPremierLeague(); // change format button
 
-fetch('https://api.football-data.org/v2/competitions/PL/teams', {
-    headers: {
-        'X-Auth-Token': api_key
-    }
-    }).then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
-})
-})
+    fetch('https://api.football-data.org/v2/competitions/PL/teams', {
+        headers: {
+            'X-Auth-Token': api_key
+        }
+    })
+    .then(response => response.json())
+    .then(response => {
+        const team = response.teams;
+        console.log(team)
+        let teamDetail = '';
+        team.forEach(m => teamDetail += showTeam(m));
+        const teamContainer = document.querySelector('.list-club-container');
+        teamContainer.innerHTML = teamDetail;
+ 
+        clickLogo();
+    });
+});
 
 // event if bundesliga button on click
 const bundesligaButton = document.querySelector('.bundesliga-button');
@@ -49,15 +53,17 @@ bundesligaButton.addEventListener('click', function() {
         }
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
+    .then(response => {
+        const team = response.teams;
+        console.log(team)
+        let teamDetail = '';
+        team.forEach(m => teamDetail += showTeam(m));
+        const teamContainer = document.querySelector('.list-club-container');
+        teamContainer.innerHTML = teamDetail;
+
+        clickLogo();
+    });
 });
-})
 
 // event if laliga button on click
 const laligaButton = document.querySelector('.laliga-button');
@@ -71,13 +77,15 @@ laligaButton.addEventListener('click', function() {
         }
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
+    .then(response => {
+        const team = response.teams;
+        console.log(team)
+        let teamDetail = '';
+        team.forEach(m => teamDetail += showTeam(m));
+        const teamContainer = document.querySelector('.list-club-container');
+        teamContainer.innerHTML = teamDetail;
+
+        clickLogo();
     });
 });
 
@@ -93,13 +101,15 @@ ligue1Button.addEventListener('click', function() {
         }
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
+    .then(response => {
+        const team = response.teams;
+        console.log(team)
+        let teamDetail = '';
+        team.forEach(m => teamDetail += showTeam(m));
+        const teamContainer = document.querySelector('.list-club-container');
+        teamContainer.innerHTML = teamDetail;
+
+        clickLogo();
     });
 });
 
@@ -115,13 +125,15 @@ seriaAButton.addEventListener('click', function() {
         }
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data.teams)
-        const teams = data.teams
-        let detail = ""
-        teams.forEach(i => detail += tarikData(i));
-        const modalContainer = document.querySelector(".list-club-container")
-        modalContainer.innerHTML = detail
+    .then(response => {
+        const team = response.teams;
+        console.log(team)
+        let teamDetail = '';
+        team.forEach(m => teamDetail += showTeam(m));
+        const teamContainer = document.querySelector('.list-club-container');
+        teamContainer.innerHTML = teamDetail;
+   
+        clickLogo();
     });
 });
 
@@ -166,36 +178,52 @@ function changeButtonFormatSeriaA() {
     document.getElementById('premier-league').setAttribute("class", "side-button");
 }
 
+// ketika logo club diklik
+function clickLogo() {
+    const modalDetailButton = document.querySelectorAll('.modal-detail-button');
+    modalDetailButton.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.dataset.id;
+            console.log(id)
+            fetch('https://api.football-data.org/v2/teams/' + id, {
+                headers: {
+                    'X-Auth-Token': api_key
+                }
+            })                            
+            .then(response => response.json())
+            .then(m => {
+                const clubDetail = showClubDetail(m);
+                console.log(clubDetail)
+                const modalBody = document.querySelector('.modal-body');
+                modalBody.innerHTML = clubDetail;
+            });
+        })
+    });    
+}
 
-function tarikData(m){
-    return `<div class="list-club">
-    <button type="button" class="btn image" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="${m.crestUrl}" alt="Liverpool">
-    <p>${m.name}</p>
- </button>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">${m.name}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <ul>
-            <li>Name: ${m.name}</li>
-            <li>Short Name: ${m.shortName}</li>
-            <li>Address: ${m.address}</li>
-            <li>Founded: ${m.founded}</li>
-            <li>Address: ${m.address}</li>
-            <li>Venue: ${m.venue}</li>
-            <li>Website: ${m.website}</li>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div>
-    </div>
-</div>
-</div>`
+function showTeam(m) {
+    return `<div class="list-club modal-detail-button" data-toggle="modal" data-target="#clubDetailModal" data-id="${m.id}">
+        <img src="${m.crestUrl}" alt="club-logo">
+        <p>${m.name}</p>
+    </div>`;
+};
 
+function showClubDetail(m) {
+    return `<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="${m.crestUrl}" class="img-fluid">
+                    </div>
+                    <div class="col-md">
+                        <ul class="list-group">
+                            <li class="list-group-item"><h4>${m.name}</h4></li>
+                            <li class="list-group-item"><strong>Short Name : </strong>${m.shortName}</li>
+                            <li class="list-group-item"><strong>Address : </strong>${m.address}</li>
+                            <li class="list-group-item"><strong>Founded : </strong>${m.founded}</li>
+                            <li class="list-group-item"><strong>Venue : </strong>${m.venue}</li>
+                            <li class="list-group-item"><strong>Website : </strong><a href="${m.website}">${m.website}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`;
 }
