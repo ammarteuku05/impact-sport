@@ -66,12 +66,20 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .content-wrapper .content .content-satu-wrapper .imgbg img {
   width: 100%;
 }
 
+mark {
+  color: white;
+  background-color: black;
+}
+
 .footer-wrapper {
-  position: fixed;
+  position: absolute;
+  bottom: 0;
+  height: 60px;
   width: 100%;
   background-color: black;
   color: white;
@@ -80,8 +88,8 @@
 .footer-wrapper .footer {
   width: 80%;
   margin: 0 auto;
-  padding: 1em 0;
   text-align: center;
+  padding: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */
