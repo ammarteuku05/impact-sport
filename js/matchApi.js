@@ -48,9 +48,11 @@ function getMatches(league) {
 getMatches('PL')
 
 function showMatches(data) {
+    let date = data.utcDate;
+    let newDate = date.replace(/[A-Z]/gi,' ')
+
     return (
-        `
-        <div class="list-matches">
+        `<div class="list-matches">
         <div class="score-matches">
             <div class="home-score">
                 <div class="img-score">
@@ -67,9 +69,8 @@ function showMatches(data) {
             </div>
         </div>
         <div class="time-matches">
-            <p>${data.utcDate}</p>
+            <p>${newDate}</p>
         </div>
-    </div>
-        `
+    </div>`
     )
 }

@@ -72,6 +72,7 @@
 }
 
 .footer-wrapper {
+  position: fixed;
   width: 100%;
   background-color: black;
   color: white;
@@ -265,7 +266,7 @@ body {
 .matches-list-container .list-matches .score-matches .home-score {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .matches-list-container .list-matches .score-matches .home-score .score-number {
   font-size: 3em;
@@ -277,7 +278,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .matches-list-container .list-matches .away-score .score-number {
   font-size: 3em;

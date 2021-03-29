@@ -217,10 +217,10 @@ function showClubDetail(m) {
                     <div class="col-md">
                         <ul class="list-group">
                             <li class="list-group-item"><h4>${m.name}</h4></li>
-                            <li class="list-group-item"><strong>Short Name : </strong>${m.shortName}</li>
+                            <li class="list-group-item"><strong>Short Name  : </strong>${m.shortName}</li>
                             <li class="list-group-item"><strong>Address : </strong>${m.address}</li>
                             <li class="list-group-item"><strong>Founded : </strong>${m.founded}</li>
-                            <li class="list-group-item"><strong>Venue : </strong>${m.venue}</li>
+                            <li class="list-group-item"><strong>Venue   : </strong>${m.venue}</li>
                             <li class="list-group-item"><strong>Website : </strong><a href="${m.website}">${m.website}</a></li>
                         </ul>
                     </div>

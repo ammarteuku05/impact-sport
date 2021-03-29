@@ -85,3 +85,9 @@
 }
 
 /*# sourceMappingURL=main.css.map */
+@media (min-width: 320px) and (max-width: 812px) {
+  .header-container, h1,h3, p,footer{
+    margin: 2px;
+    font-size: 15px;
+  };
+}
